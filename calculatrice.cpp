@@ -59,6 +59,13 @@ Calculatrice::Calculatrice()
                 break;
             }
 
+            case 'r' :
+                if(!P.Vide())
+                    P.depiler();
+                else
+                    cerr << "Il n'y a rien à enlever" << endl;
+                break;
+
             case '+' :
             {
                 int right = P.depiler();
@@ -98,6 +105,20 @@ Calculatrice::Calculatrice()
             {
                 int value = P.depiler();
                 cout << "> " << value << endl;
+                break;
+            }
+            case '|' :
+            {
+                int right = P.depiler();
+                int left = P.depiler();
+                P.empiler(left | right);
+                break;
+            }
+            case '&' :
+            {
+                int right = P.depiler();
+                int left = P.depiler();
+                P.empiler(left & right);
                 break;
             }
 
@@ -143,6 +164,10 @@ char Calculatrice::saisie(int & V)
             return '%';
         case '=' :
             return '=';
+        case '|' :
+            return '|';
+        case '&' :
+            return '&';
 
         case 'q' :
             return 'q';
@@ -158,6 +183,10 @@ char Calculatrice::saisie(int & V)
             return 'd';
         case 'D' :
             return 'd';
+        case 'r' :
+            return 'r';
+        case 'R' :
+            return 'r';
 
         default :
         {
